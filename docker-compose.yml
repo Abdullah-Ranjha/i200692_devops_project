@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  appointments:
+    image: abd444168/appointments:latest
+    ports:
+      - "7070:7070"
+    environment:
+      - DATABASE_URL=mysql://db:3306/
+
+  doctors:
+    image: abd444168/doctors:latest
+    ports:
+      - "9090:9090"
+    environment:
+      - DATABASE_URL=mysql://db:3306/
+
+  frontend:
+    image: abd444168/frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - doctors
+      - appointments
+    environment:
+      - DOCTORS_SERVICE_URL=http://doctors:9090
+      - APPOINTMENTS_SERVICE_URL=http://appointments:7070
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root-password
+      - MYSQL_DATABASE=dummy-database
+
+# # Optional: Remove if using the default Docker network
+# networks:
+#   default:
+#     external:
+#       name: project-network
