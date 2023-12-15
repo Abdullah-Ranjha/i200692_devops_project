@@ -22,6 +22,24 @@ spec:
           value: "doctors-service:9090"
         - name: APPOINTMENTS_SERVICE_URL
           value: "appointments-service:7070"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+
+        readinessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
 
 ---
 
