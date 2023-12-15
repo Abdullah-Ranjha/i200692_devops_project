@@ -47,10 +47,17 @@ jobs:
     
     # - name: Fetch latest changes from main
     #   run: git fetch origin main && git rebase origin/main
+    - name: Rebase
+      run: |
+        git stash
+        git fetch origin main
+        git rebase origin/main
+        git stash pop
+    
 
     - name: Commit and Push docker-compose.yml
       run: |
         git config --global user.name 'Abdullah-Ranjha'
         git add docker-compose.yml
         git commit -m "Update frontend image to ${{ steps.slug.outputs.sha7 }}"
-        git push 
+        git push || (git pull --rebase origin main && git push)
