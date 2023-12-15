@@ -35,7 +35,7 @@ jobs:
       - name: Update docker-compose.yml
         run: |
           TAG=${{ steps.meta.outputs.tags }}
-          sed -i "s/abd444168\/doctors:.*/abd444168\/doctors:$TAG/" docker-compose.yml
+          sed -i "s|abd444168/doctors:.*|abd444168/doctors:$TAG|" docker-compose.yml
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update docker-compose.yml with new Doctors image tag
