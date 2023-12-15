@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appointments
+  template:
+    metadata:
+      labels:
+        app: appointments
+    spec:
+      containers:
+      - name: appointments
+        image: abd444168/appointments:latest
+        ports:
+        - containerPort: 7070
+        env:
+        - name: DATABASE_URL
+          value: "mysql://db:3306/"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: appointments-service
+spec:
+  selector:
+    app: appointments
+  ports:
+  - port: 7070
+    targetPort: 7070
