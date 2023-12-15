@@ -11,7 +11,7 @@ services:
       - project-network
 
   doctors:
-    image: abd444168/doctors:69d8198
+    image: abd444168/doctors:928d5a2
     ports:
       - "9090:9090"
     environment:
