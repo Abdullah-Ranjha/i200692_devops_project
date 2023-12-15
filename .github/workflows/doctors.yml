@@ -45,8 +45,8 @@ jobs:
     - name: Update docker-compose file
       run: ./update-compose-version.sh doctors ${{ steps.slug.outputs.sha7 }}
     
-    - name: Fetch latest changes from main
-      run: git fetch origin main && git rebase origin/main
+    # - name: Fetch latest changes from main
+    #   run: git fetch origin main && git rebase origin/main
 
     - name: Commit and Push docker-compose.yml
       run: |
