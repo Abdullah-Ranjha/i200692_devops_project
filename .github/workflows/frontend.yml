@@ -39,7 +39,7 @@ jobs:
         push: true
         tags: abd444168/frontend:${{ steps.slug.outputs.sha7 }}
         
-    - name: Update script perms
+    - name: Update script permsissions
       run: chmod +x update-compose-version.sh
       
     - name: Update docker-compose file
