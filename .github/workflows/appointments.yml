@@ -59,6 +59,7 @@ jobs:
     - name: Commit and Push docker-compose.yml
       run: |
         git config --global user.name 'Abdullah-Ranjha'
+        git config --global user.email "i200692@nu.edu.pk"
         git add docker-compose.yml
         git commit -m "Update appointments image to ${{ steps.slug.outputs.sha7 }}"
         git push || (git pull --rebase origin main && git push)
