@@ -36,4 +36,4 @@ jobs:
         run: |
           TAG=${{ steps.meta.outputs.tags }}
           sed -i "s/abd444168\/frontend:.*/abd444168\/frontend:$TAG/" docker-compose.yml
-      - uses: stefanzweifel/git-auto-commit-action@4
+      - uses: stefanzweifel/git-auto-commit-action@5
