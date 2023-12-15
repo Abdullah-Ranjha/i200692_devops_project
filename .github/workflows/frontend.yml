@@ -53,4 +53,4 @@ jobs:
         git config --global user.name 'Abdullah-Ranjha'
         git add docker-compose.yml
         git commit -m "Update frontend image to ${{ steps.slug.outputs.sha7 }}"
-        git push --force-with-lease || (git pull --rebase origin main and git push)
+        git push 
