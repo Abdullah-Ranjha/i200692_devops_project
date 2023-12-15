@@ -2,7 +2,7 @@ version: '3'
 
 services:
   appointments:
-    image: abd444168/appointments:751e0a3
+    image: abd444168/appointments:fbfcca3
     ports:
       - "7070:7070"
     environment:
@@ -11,7 +11,7 @@ services:
       - project-network
 
   doctors:
-    image: abd444168/doctors:751e0a3
+    image: abd444168/doctors:fbfcca3
     ports:
       - "9090:9090"
     environment:
@@ -20,7 +20,7 @@ services:
       - project-network
 
   frontend:
-    image: abd444168/frontend:751e0a3
+    image: abd444168/frontend:fbfcca3
     ports:
       - "3000:3000"
     depends_on:
