@@ -2,7 +2,7 @@ version: '3'
 
 services:
   appointments:
-    image: abd444168/appointments:b64c5b6
+    image: abd444168/appointments:fbd738f
     ports:
       - "7070:7070"
     environment:
