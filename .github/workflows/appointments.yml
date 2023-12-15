@@ -37,18 +37,18 @@ jobs:
         context: ./appointments
         file: ./appointments/Dockerfile
         push: true
-        tags: abd444168/appointments-service:${{ steps.slug.outputs.sha7 }}
+        tags: abd444168/appointments:${{ steps.slug.outputs.sha7 }}
         
     - name: Update script perms
       run: chmod +x update-compose-version.sh
       
     - name: Update docker-compose file
-      run: ./update-compose-version.sh appointment-service ${{ steps.slug.outputs.sha7 }}
+      run: ./update-compose-version.sh appointments ${{ steps.slug.outputs.sha7 }}
     
     - name: Commit and Push docker-compose.yml
       run: |
         git config --global user.name 'Abdullah-Ranjha'
         git config --global user.email 'your-email@example.com'
         git add docker-compose.yml
-        git commit -m "Update appointments-service image to ${{ steps.slug.outputs.sha7 }}"
+        git commit -m "Update appointments image to ${{ steps.slug.outputs.sha7 }}"
         git push
