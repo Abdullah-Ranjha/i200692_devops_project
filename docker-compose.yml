@@ -20,7 +20,7 @@ services:
       - project-network
 
   frontend:
-    image: abd444168/frontend:latest
+    image: abd444168/frontend:bc99cfa
     ports:
       - "3000:3000"
     depends_on:
