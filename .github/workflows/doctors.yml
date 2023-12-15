@@ -18,7 +18,7 @@ jobs:
       with:
           token: ${{ secrets.PAT }}
           
-    - name: Get Short SHA
+    - name: Get SHA
       id: slug
       run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA::7})"
 
@@ -39,7 +39,7 @@ jobs:
         push: true
         tags: abd444168/doctors:${{ steps.slug.outputs.sha7 }}
         
-    - name: Update script perms
+    - name: Update script permissions
       run: chmod +x update-compose-version.sh
       
     - name: Update docker-compose file
